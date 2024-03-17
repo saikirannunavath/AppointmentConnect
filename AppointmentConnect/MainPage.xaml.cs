@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Maui.Markup;
+using CommunityToolkit.Maui.Markup;
 using Microsoft.Maui.Controls;
 
 namespace AppointmentConnect
@@ -7,6 +7,8 @@ namespace AppointmentConnect
     {
         DatePicker datePicker;
         TimePicker timePicker;
+        Entry studentNameEntry;
+        Picker professorPicker;
 
         public MainPage()
         {
@@ -26,6 +28,22 @@ namespace AppointmentConnect
                 VerticalOptions = LayoutOptions.Center,
                 FontSize = 24 // Increase font size for the time picker
             };
+
+            studentNameEntry = new Entry
+            {
+                Placeholder = "Enter Student Name",
+                FontSize = 20 // Set font size for the entry
+            };
+
+            professorPicker = new Picker
+            {
+                Title = "Select Professor",
+                FontSize = 20 // Set font size for the picker
+            };
+            professorPicker.Items.Add("Professor A");
+            professorPicker.Items.Add("Professor B");
+            professorPicker.Items.Add("Professor C");
+            professorPicker.Items.Add("Professor D");
 
             Button dateButton = new Button
             {
@@ -66,6 +84,8 @@ namespace AppointmentConnect
                         Margin = new Thickness(0, 20), // Add top margin
                         TextColor = Color.FromRgba(0, 0, 0, 255) // Set text color to black
                     },
+                    studentNameEntry,
+                    professorPicker,
                     datePicker,
                     timePicker,
                     dateButton,
@@ -92,7 +112,8 @@ namespace AppointmentConnect
         {
             // You can use the selectedDate and selectedTime to perform actions, such as saving the appointment.
             // For now, let's display a simple alert.
-            DisplayAlert("Appointment Scheduled", $"Date: {selectedDate:D}\nTime: {selectedTime}", "OK");
+            string selectedProfessor = professorPicker.SelectedItem?.ToString() ?? "No Professor Selected";
+            DisplayAlert("Appointment Scheduled", $"Student Name: {studentNameEntry.Text}\nProfessor: {selectedProfessor}\nDate: {selectedDate:D}\nTime: {selectedTime}", "OK");
         }
     }
 }
