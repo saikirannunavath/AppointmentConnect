@@ -1,16 +1,26 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppointmentConnect.MainPage">
 
-    <StackLayout>
-        
+    <StackLayout Padding="20">
+
         <Label Text="Welcome to Appointment Connect!"
                FontSize="24"
-               HorizontalOptions="Center" />
+               HorizontalOptions="Center"
+               Margin="0,20,0,20" />
 
-        <Button Text="Schedule an Appointment"
-                Command="{Binding HandleAppointmentButtonClicked}" />
+       
+
+        <Entry x:Name="nameEntry"
+               Placeholder="Enter Name"
+               FontSize="18"
+               Margin="0,0,0,10" />
+
+        <Button Text="Continue"
+                BackgroundColor="#4CAF50"
+                TextColor="White"
+                Command="{Binding HandleContinueButtonClicked}"
+                Margin="0,20,0,0" />
     </StackLayout>
 
 </ContentPage>
